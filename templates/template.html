@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>{{.Title}}</title>
+    <meta name="keywords" content="个人引导页,个人主页,个人介绍页,拟态引导页,简约个人主页,个人主页源码">
+    <meta name="description" content="一款简约平滑的个人主页,收集精品网络免费资源">
+    <meta name="author" content="LinQi">
+    <meta name="copyright" content="LinQi">
+    <meta itemprop="name" content="一个发现美的网站" />
+    <meta itemprop="image" content="" />
+    <meta itemprop="description" content="一款简约平滑的个人主页,收集精品网络免费资源" />
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1092713_tcnnod74va9.css">
+</head>
+
+<body>
+    <div class="centent">
+        <div class="main" id="main">
+            <div class="main-top">
+                <div class="main-top-title">
+                    <h1>{{.Title}}</h1>
+                    <a href="{{.ImgURL}}">
+                        <img src="{{.Img}}" alt="头像">
+                    </a>
+                </div>
+                <div class="main-top-Brief">{{.YanHTML}}</div>
+            </div>
+            <div class="main-right">
+                <div class="main-right-background">
+                    <img src="{{.Background}}" alt="API">
+                </div>
+            </div>
+            <div class="main-bot">
+                <div class="main-bot-tb">
+                    {{range .IconLinks}}
+                    <a href="{{.IcoURL}}" class="main-bot-tb-1"><i class="{{.Ico}}"></i></a>
+                    {{end}}
+                </div>
+                <div class="main-bot-title">
+                    <h3>我的站点</h3>
+                </div>
+                <div class="main-bot-nr">
+                    {{range .SiteLinks}}
+                    <a href="{{.URL}}" class="main-bot-nr-kp" target="_blank">
+                        <div class="main-bot-nr-kp-k">
+                            <div class="main-bot-nr-kp-k-img">
+                                <img src="{{.Ico}}" alt="" class="kkk">
+                            </div>
+                            <div class="main-bot-nr-kp-k-n">
+                                <span class="p1">{{.Text}}</span>
+                                <span class="p2">{{.JJ}}</span>
+                            </div>
+                        </div>
+                    </a>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <p>{{.Dome}}</p>
+            <p>{{.Qu}}</p><br>
+            <p>{{if .ICPLink}}<a style="color: #00bfff;" href="{{.ICPLink}}" target="_blank" rel="noopener"><img src="./icp.png" style="width: 16px; height: 16px; vertical-align: middle;"> {{.ICPText}}</a>{{end}}</p>
+            <p>Copyright © 2020-{{.Year}} {{.Name}} All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <script src="https://myhkw.cn/player/js/player.js" id="myhk" key="demo" m="1"></script>
+    <script>
+    // 页面加载时设置随机颜色的函数
+    function getRandomLightColor() {
+        const hue = Math.floor(Math.random() * 360);
+        const saturation = 60 + Math.random() * 10;
+        const lightness = 90 + Math.random() * 8;
+        return 'hsl(' + hue + ', ' + saturation + '%, ' + lightness + '%)';
+    }
+    
+    // 页面加载完成后，为每个卡片设置随机颜色
+    window.onload = function() {
+        const cards = document.querySelectorAll('.main-bot-nr-kp-k');
+        cards.forEach(function(card) {
+            card.style.backgroundColor = getRandomLightColor();
+        });
+    };
+    </script>
+</body>
+
+</html> 
